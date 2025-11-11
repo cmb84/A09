@@ -1,5 +1,8 @@
 /* custom property */
 :root {
+	--menu-light: #ffffff;
+	--menu-mid: antiquewhite;
+	--menu-dark: #000000;
 	--accent-color: #800000;  /* could also be coded #800 */
 	--gradient-color: #f6bb73;
 }
@@ -126,3 +129,67 @@ footer {
 .large {
 	font-size: 125%;
 }
+
+/* navigation menu (Chapter 7 exercises 7-1 and 7-2) */
+.navbar {
+	background-color: var(--accent-color);
+	/* links */
+	& a {
+		display: block;
+		padding: 1em;
+		text-decoration: none;
+		color: var(--menu-light);
+		margin: 0 1px 2px;
+	}
+	/* hover/focus/current */
+	& a:hover, & a:focus, & a.current {
+		background-color: var(--menu-mid);
+		color: var(--menu-dark);
+	}
+	/* ul baseline */
+	& ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}
+.menu {
+	display: flex;
+	flex-wrap: wrap;
+	& > li {
+		flex-basis: 20%;
+		text-align: center;
+		position: relative; /* for submenu positioning when needed */
+	}
+}
+/* show submenu on hover */
+.menu > li:hover > .submenu {
+	display: block;
+}
+
+/* submenu dropdown */
+.submenu {
+	display: none;
+	position: absolute;
+	left: 0;
+	right: 0;
+	background-color: var(--accent-color);
+	color: var(--menu-light);
+	z-index: 10;
+}
+/* spacing after link text before triangle */
+.has-submenu > a small {
+	margin-left: .35em;
+	font-size: .8em;
+}
+
+/* submenu link spacing to match main items */
+.submenu > li a { 
+	margin: 0 2px 2px; 
+}
+
+/* remove extra outside margins on ends (main and submenus) */
+.menu > li:first-child a { margin-left: 0; }
+.menu > li:last-child a { margin-right: 0; }
+
+ul.circle { list-style-type: circle; }
